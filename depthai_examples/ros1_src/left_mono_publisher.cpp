@@ -54,12 +54,12 @@ std::tuple<dai::Pipeline, int, int> createPipeline(std::string resolution, float
     
     if (exposureTimeUs != -1 && sensitivityIso != -1)
     {
-	    monoLeft->initialControl.setAutoExposureEnable();
+	    monoLeft->initialControl.setManualExposure(exposureTimeUs, sensitivityIso);
     }
     else
     {
+	    monoLeft->initialControl.setAutoExposureEnable();
         // monoLeft->initialControl.setManualExposure(1500, 100);
-	    monoLeft->initialControl.setManualExposure(exposureTimeUs, sensitivityIso);
     }
 
     monoLeft->out.link(xoutLeft->input);
