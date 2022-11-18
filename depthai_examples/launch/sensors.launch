@@ -1,0 +1,17 @@
+<launch>
+    <!-- Run left mono pub node -->
+  <arg name="monoResolution"    default="720p" /> 
+  <arg name="fps"               default="60.0" /> 
+  <arg name="exposureTimeUs"    default="1" /> 
+  <arg name="sensitivityIso"    default="100" /> 
+    
+  <include file="$(find depthai_examples)/launch/left_mono_publisher.launch">
+        <arg name="monoResolution"   value="$(arg monoResolution)"/>
+        <arg name="fps"              value="$(arg fps)"/>
+        <arg name="exposureTimeUs"   value="$(arg exposureTimeUs)"/>
+        <arg name="sensitivityIso"   value="$(arg sensitivityIso)"/>
+  </include>
+
+  <node name="lite_node" pkg="lidar_lite" type="lidar_lite_node" output="screen" respawn="true"/>
+
+</launch>
